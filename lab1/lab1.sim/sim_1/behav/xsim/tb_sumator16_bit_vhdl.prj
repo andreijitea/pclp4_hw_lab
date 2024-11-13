@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../lab1.srcs/sources_1/new/uat.vhd" \
+"../../../../lab1.srcs/sources_1/new/sumator_1bit.vhd" \
+"../../../../lab1.srcs/sources_1/new/sumator_4bit.vhd" \
+"../../../../lab1.srcs/sources_1/new/sumator_16bit.vhd" \
+"../../../../lab1.srcs/sources_1/new/tb_sumator16_bit.vhd" \
+
+# Do not sort compile order
+nosort
