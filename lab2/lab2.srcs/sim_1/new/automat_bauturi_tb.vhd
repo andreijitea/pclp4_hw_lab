@@ -18,18 +18,8 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity automat_bauturi_tb is
 end automat_bauturi_tb;
@@ -38,13 +28,13 @@ architecture tb of automat_bauturi_tb is
 
     component automat_bauturi is
         port(
-            clk   : in  std_logic;
-            reset : in  std_logic;
+            clk           : in  std_logic;
+            reset         : in  std_logic;
 
             -- Intrari pentru bancnote
-            leu1  : in  std_logic;
-            lei5  : in  std_logic;
-            lei10 : in  std_logic;
+            leu1          : in  std_logic;
+            lei5          : in  std_logic;
+            lei10         : in  std_logic;
 
             -- cerere_produs = int 0 - 10
             cerere_produs : in  integer range 0 to 10;
@@ -66,7 +56,7 @@ architecture tb of automat_bauturi_tb is
     signal clk_s          : std_logic := '0';
     signal reset_s        : std_logic := '0';
 
-    signal leu1_s          : std_logic := '0';
+    signal leu1_s         : std_logic := '0';
     signal lei5_s         : std_logic := '0';
     signal lei10_s        : std_logic := '0';
 
@@ -76,7 +66,7 @@ architecture tb of automat_bauturi_tb is
     signal produs_s       : integer range 0 to 10;
     signal leu1_rest_s     : std_logic;
     signal lei5_rest_s     : std_logic;
-    signal refuza_bani_s  : std_logic;
+    signal refuza_bani_s   : std_logic;
 
     constant PERIOD : time := 10 ns;
 
@@ -110,9 +100,9 @@ begin
     -- secventa de test
     stim_proc: process
     begin
-        -- reset pe 2 cicluri
+        -- reset
         reset_s <= '1';
-        wait for 3*PERIOD;
+        wait for PERIOD;
         reset_s <= '0';
         wait for 2*PERIOD;
 
