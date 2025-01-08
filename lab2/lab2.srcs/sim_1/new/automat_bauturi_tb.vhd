@@ -90,9 +90,9 @@ begin
     clk_process: process
     begin
         while TRUE loop
-            clk_s <= '1';
-            wait for PERIOD/2;
             clk_s <= '0';
+            wait for PERIOD/2;
+            clk_s <= '1';
             wait for PERIOD/2;
         end loop;
     end process;
@@ -114,7 +114,7 @@ begin
 
         -- cer produs de 5 lei (dar este doar 1 leu)
         cerere_produs_s <= 5;
-        wait for 5*PERIOD;
+        wait for PERIOD;
         cerere_produs_s <= 0;
 
         -- introduc inca 5 lei
@@ -125,8 +125,9 @@ begin
 
         -- cer din nou produs de 5 lei => acum sunt 6 lei
         cerere_produs_s <= 5;
-        wait for 3*PERIOD;
+        wait for PERIOD;
         cerere_produs_s <= 0;
+        wait for 2*PERIOD;
 
         -- introduc încă 10 lei => dar s-ar atinge 11, deci ii refuza
         lei10_s <= '1';
@@ -136,8 +137,9 @@ begin
 
         -- cer produs de 2 lei (am 1 leu in aparat => insuficient)
         cerere_produs_s <= 2;
-        wait for 3*PERIOD;
+        wait for PERIOD;
         cerere_produs_s <= 0;
+        wait for 2*PERIOD;
 
         -- introduc 1 leu => total 2 (suficient pt un produs de 2 lei)
         leu1_s <= '1';
@@ -147,8 +149,9 @@ begin
 
         -- cer produs de 2 lei
         cerere_produs_s <= 2;
-        wait for 3*PERIOD;
+        wait for PERIOD;
         cerere_produs_s <= 0;
+        wait for 2*PERIOD;
 
         -- introduc 5 lei
         lei5_s <= '1';
@@ -158,7 +161,7 @@ begin
 
         -- cer produs de 5 lei, dar am luat deja 2 produse => da rest
         cerere_produs_s <= 5;
-        wait for 5*PERIOD;
+        wait for PERIOD;
         cerere_produs_s <= 0;
         wait for 5*PERIOD;
         
